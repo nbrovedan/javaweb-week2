@@ -1,7 +1,9 @@
 package br.com.voffice.java.jwptf02.week2.controllers;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,7 +17,6 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.voffice.java.jwptf02.week2.entities.MediaFile;
@@ -27,18 +28,10 @@ import br.com.voffice.java.jwptf02.week2.repositories.RepositoryFactory;
 public class MediaFileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_DIRECTORY = "servletimages";
 	private static final MediaFileRepository repository = RepositoryFactory.getMediaFileRepository();
 
 	private final ObjectMapper json = new ObjectMapper();
 
-	public String getFolderUploadPath() {
-		String folderUploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-		File uploadDir = new File(folderUploadPath);
-		if (!uploadDir.exists())
-			uploadDir.mkdir();
-		return folderUploadPath;
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,14 +44,14 @@ public class MediaFileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			for (Part part : req.getParts()) {
-				receiveMediaFile(req, resp, getFolderUploadPath(), part);
+				receiveMediaFile(req, resp, part);
 			}
 		} catch (Exception e) {
 			log("cannot receive media file", e);
 		}
 	}
 
-	private void receiveMediaFile(HttpServletRequest req, HttpServletResponse resp, String folderUploadPath, Part part)
+	private void receiveMediaFile(HttpServletRequest req, HttpServletResponse resp, Part part)
 			throws IOException {
 		String title = req.getParameter("title");
 		String filename = part.getSubmittedFileName();
@@ -66,32 +59,57 @@ public class MediaFileServlet extends HttpServlet {
 		repository.create(mediaFile);
 		if (Objects.nonNull(filename)) {
 			writeAsJson(req, resp, mediaFile);
-			writeAsHtml(req, resp, folderUploadPath, part, title, filename, mediaFile);
+			writeAsHtml(req, resp, part, title, filename, mediaFile);
+			//download(req, resp, mediaFile.getFilename(), new ByteArrayInputStream(mediaFile.getContents()));
 		}
 
 	}
 
-	private void writeAsHtml(HttpServletRequest req, HttpServletResponse resp, String folderUploadPath, Part part,
+	private void writeAsHtml(HttpServletRequest req, HttpServletResponse resp, Part part,
 			String name, String filename, MediaFile mediaFile) throws IOException {
 		if (!"true".equals(req.getParameter("xhr"))) {
 			resp.setContentType("text/html");
 			resp.getWriter().write("<h1>Posters</h1>");
-			String fileUploadPath = folderUploadPath + File.separator + filename;
-			part.write(fileUploadPath);
 			resp.getWriter().format("<h2>%s</h2>", name);
-			resp.getWriter().format("<img src=\"%s\" alt=\"%s\" width=50 >",
-					"http://localhost:8080/week2/servletimages/" + filename, filename);
-			resp.getWriter().format("<div><label>Filesystem:</label><code>%s</code></div>", fileUploadPath);
-			resp.getWriter().format("<img src=\"" + mediaFile.getDataUrl() + "\">");
+			resp.getWriter().format("<img src=\"%s\" alt=\"%s\" >",
+					mediaFile.getDataUrl(), filename);
 		}
 	}
 
 	private void writeAsJson(HttpServletRequest req, HttpServletResponse resp, MediaFile mediaFile)
-			throws IOException, JsonProcessingException {
+			throws IOException {
 		if ("true".equals(req.getParameter("xhr"))) {
 			resp.setContentType("application/json");
 			resp.getWriter().format("%s", new ObjectMapper().writeValueAsString(mediaFile));
 		}
+	}
+
+	private void download(HttpServletRequest req, HttpServletResponse resp, String filename, InputStream in) {
+		resp.setHeader("Content-disposition", "attachment; filename="+filename);
+
+        try(
+          OutputStream out = resp.getOutputStream()) {
+
+            byte[] buffer = new byte[2048];
+
+            int numBytesRead;
+            while ((numBytesRead = in.read(buffer)) > 0) {
+                out.write(buffer, 0, numBytesRead);
+            }
+        } catch (IOException e) {
+			log("cannot download file",e);
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void download(HttpServletRequest req, HttpServletResponse resp, String filename, String downloadFolder) {
+		InputStream in = req.getServletContext().getResourceAsStream(downloadFolder+"/"+filename);
+        download(req, resp, filename, in);
 	}
 
 }

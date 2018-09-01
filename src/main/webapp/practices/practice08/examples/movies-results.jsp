@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <!doctype html>
 <html lang="en">
 <head>
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -20,6 +22,8 @@
 <body>
 	<div class="container">
 		<h1 class="pagetitle">Movies - Year: ${year}</h1>
+		<h2 style="color:red">Titulo 2</h2>
+		<t:titulo2 text="Servlets e JSP"></t:titulo2>
 
 		<c:if test="${notFoundMovies}">
 			<div class="alert alert-danger">No movies found</div>

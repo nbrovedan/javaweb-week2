@@ -1,34 +1,4 @@
-# oscar2018
-## HTML
-* Text
-* Tables
-* Forms
-* Sections
-
-## JS
-* Object
-* Function
-* String
-* Array
-* Events
-* XHR
-
-## CSS
-* text and font
-* border, margin, padding
-* display
-* class and id
-
-## jQuery
-* val(), text(), html()
-* css()
-* ajax
-
-## Bootstrap
-* Text
-* Tables
-* Forms
-* Sections
+# week 1
 
 ## Servlets
 * Parameters

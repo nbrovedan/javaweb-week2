@@ -21,7 +21,6 @@ public  class Movie {
     @JacksonXmlProperty(isAttribute = true)
 	private String title;
     @JacksonXmlProperty(localName="starts")
-    //@JsonProperty("starts")
 	private LocalDate releasedDate;
 	private Double budget;
 	private String poster;
