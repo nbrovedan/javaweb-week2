@@ -1,4 +1,4 @@
-package br.com.voffice.java.jwptf02.week2.entities;
+package br.com.voffice.java.jwptf02.week2.application.entities;
 
 import java.time.LocalDate;
 

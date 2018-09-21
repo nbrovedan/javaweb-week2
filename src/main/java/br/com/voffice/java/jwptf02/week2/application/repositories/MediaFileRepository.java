@@ -1,8 +1,8 @@
-package br.com.voffice.java.jwptf02.week2.repositories;
+package br.com.voffice.java.jwptf02.week2.application.repositories;
 
 import java.util.Collection;
 
-import br.com.voffice.java.jwptf02.week2.entities.MediaFile;
+import br.com.voffice.java.jwptf02.week2.application.entities.MediaFile;
 
 public interface MediaFileRepository {
 

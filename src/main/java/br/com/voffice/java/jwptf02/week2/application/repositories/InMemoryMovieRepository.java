@@ -1,4 +1,4 @@
-package br.com.voffice.java.jwptf02.week2.repositories;
+package br.com.voffice.java.jwptf02.week2.application.repositories;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import br.com.voffice.java.jwptf02.week2.entities.Movie;
+import br.com.voffice.java.jwptf02.week2.application.entities.Movie;
 
 
 public class InMemoryMovieRepository implements MovieRepository {

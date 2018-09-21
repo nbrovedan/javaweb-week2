@@ -17,9 +17,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import br.com.voffice.java.jwptf02.week2.entities.Movie;
-import br.com.voffice.java.jwptf02.week2.repositories.MovieRepository;
-import br.com.voffice.java.jwptf02.week2.repositories.RepositoryFactory;
+import br.com.voffice.java.jwptf02.week2.application.entities.Movie;
+import br.com.voffice.java.jwptf02.week2.application.repositories.MovieRepository;
+import br.com.voffice.java.jwptf02.week2.application.repositories.RepositoryFactory;
 
 @WebServlet("/practice05-examples-movies")
 public class MovieController extends HttpServlet {

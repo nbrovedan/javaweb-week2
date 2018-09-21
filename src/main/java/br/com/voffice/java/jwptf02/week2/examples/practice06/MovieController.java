@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.voffice.java.jwptf02.week2.entities.Movie;
-import br.com.voffice.java.jwptf02.week2.repositories.MovieRepository;
-import br.com.voffice.java.jwptf02.week2.repositories.RepositoryFactory;
+import br.com.voffice.java.jwptf02.week2.application.entities.Movie;
+import br.com.voffice.java.jwptf02.week2.application.repositories.MovieRepository;
+import br.com.voffice.java.jwptf02.week2.application.repositories.RepositoryFactory;
 
 @WebServlet("/practice06-examples-movies")
 public class MovieController extends HttpServlet {

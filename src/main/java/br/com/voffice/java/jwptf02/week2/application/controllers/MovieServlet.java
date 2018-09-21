@@ -1,4 +1,4 @@
-package br.com.voffice.java.jwptf02.week2.controllers;
+package br.com.voffice.java.jwptf02.week2.application.controllers;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,9 +20,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import br.com.voffice.java.jwptf02.week2.entities.Movie;
-import br.com.voffice.java.jwptf02.week2.repositories.MovieRepository;
-import br.com.voffice.java.jwptf02.week2.repositories.RepositoryFactory;
+import br.com.voffice.java.jwptf02.week2.application.entities.Movie;
+import br.com.voffice.java.jwptf02.week2.application.repositories.MovieRepository;
+import br.com.voffice.java.jwptf02.week2.application.repositories.RepositoryFactory;
 
 @WebServlet("/api/movies/*")
 public class MovieServlet extends HttpServlet {

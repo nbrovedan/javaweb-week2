@@ -1,6 +1,7 @@
-# week 1
+# week 2
 
 ## Servlets
+
 * Parameters
 * Attributes
 * Session
@@ -18,6 +19,7 @@
 * Servlet Context
 
 ## JSP
+
 * Implicit Object
 * Scriplets
 * Directives

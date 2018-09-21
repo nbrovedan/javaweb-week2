@@ -1,4 +1,4 @@
-package br.com.voffice.java.jwptf02.week2.controllers;
+package br.com.voffice.java.jwptf02.week2.examples.practice05;
 
 import java.io.IOException;
 

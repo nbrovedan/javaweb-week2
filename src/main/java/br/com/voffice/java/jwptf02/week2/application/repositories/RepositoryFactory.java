@@ -1,4 +1,4 @@
-package br.com.voffice.java.jwptf02.week2.repositories;
+package br.com.voffice.java.jwptf02.week2.application.repositories;
 
 public abstract class RepositoryFactory {
 

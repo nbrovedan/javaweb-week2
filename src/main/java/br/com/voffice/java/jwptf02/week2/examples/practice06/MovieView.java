@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.voffice.java.jwptf02.week2.entities.Movie;
+import br.com.voffice.java.jwptf02.week2.application.entities.Movie;
 
 @WebServlet("/practice06-examples-movies-view")
 public class MovieView extends HttpServlet {

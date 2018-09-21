@@ -1,6 +1,5 @@
-package br.com.voffice.java.jwptf02.week2.controllers;
+package br.com.voffice.java.jwptf02.week2.application.controllers;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,9 +18,9 @@ import org.apache.commons.io.IOUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.voffice.java.jwptf02.week2.entities.MediaFile;
-import br.com.voffice.java.jwptf02.week2.repositories.MediaFileRepository;
-import br.com.voffice.java.jwptf02.week2.repositories.RepositoryFactory;
+import br.com.voffice.java.jwptf02.week2.application.entities.MediaFile;
+import br.com.voffice.java.jwptf02.week2.application.repositories.MediaFileRepository;
+import br.com.voffice.java.jwptf02.week2.application.repositories.RepositoryFactory;
 
 @WebServlet("/files")
 @MultipartConfig
