@@ -31,9 +31,13 @@ public class MediaFileController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json");
-		Collection<MediaFile> files = repository.findAll();
-		resp.getWriter().write(json.writeValueAsString(files));
+		try {
+			resp.setContentType("application/json");
+			Collection<MediaFile> files = repository.findAll();
+			resp.getWriter().write(json.writeValueAsString(files));
+		} catch (Exception e) {
+			log("cannot get media files", e);
+		}
 	}
 
 	@Override
@@ -47,11 +51,11 @@ public class MediaFileController extends HttpServlet {
 		}
 	}
 
-	private void receiveMediaFile(HttpServletRequest req, HttpServletResponse resp, Part part)
-			throws IOException {
+	private void receiveMediaFile(HttpServletRequest req, HttpServletResponse resp, Part part) throws IOException {
 		String title = req.getParameter("title");
 		String filename = part.getSubmittedFileName();
-		MediaFile mediaFile = new MediaFile(title, filename, part.getSize(), IOUtils.toByteArray(part.getInputStream()));
+		MediaFile mediaFile = new MediaFile(title, filename, part.getSize(),
+				IOUtils.toByteArray(part.getInputStream()));
 		repository.create(mediaFile);
 		if (Objects.nonNull(filename)) {
 			writeAsJson(req, resp, mediaFile);
@@ -60,19 +64,17 @@ public class MediaFileController extends HttpServlet {
 
 	}
 
-	private void writeAsHtml(HttpServletRequest req, HttpServletResponse resp, Part part,
-			String name, String filename, MediaFile mediaFile) throws IOException {
+	private void writeAsHtml(HttpServletRequest req, HttpServletResponse resp, Part part, String name, String filename,
+			MediaFile mediaFile) throws IOException {
 		if (!"true".equals(req.getParameter("xhr"))) {
 			resp.setContentType("text/html");
 			resp.getWriter().write("<h1>Posters</h1>");
 			resp.getWriter().format("<h2>%s</h2>", name);
-			resp.getWriter().format("<img src=\"%s\" alt=\"%s\" >",
-					mediaFile.getDataUrl(), filename);
+			resp.getWriter().format("<img src=\"%s\" alt=\"%s\" >", mediaFile.getDataUrl(), filename);
 		}
 	}
 
-	private void writeAsJson(HttpServletRequest req, HttpServletResponse resp, MediaFile mediaFile)
-			throws IOException {
+	private void writeAsJson(HttpServletRequest req, HttpServletResponse resp, MediaFile mediaFile) throws IOException {
 		if ("true".equals(req.getParameter("xhr"))) {
 			resp.setContentType("application/json");
 			resp.getWriter().format("%s", json.writeValueAsString(mediaFile));
