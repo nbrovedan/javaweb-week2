@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>practice 5</title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="pagetitle">practice 5</h1>
+		<div id="messageArea"></div>
+
+		<form id="frm">
+			<input id="movie.field.id" type="hidden">
+			<fieldset class="form-group">
+				<label for="movie.field.title">Title: </label> <input
+					id="movie.field.title" type="text" class="form-control" /> <span
+					id="movie.help.title"></span>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Released Date: </label> <input id="movie.field.releasedDate"
+					type="date" class="form-control" /> <span
+					id="movie.help.releasedDate"></span>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Budget: </label> <input id="movie.field.budget" type="text"
+					class="form-control" /> <span id="movie.help.budget"></span>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Poster: </label> <input id="movie.field.poster" type="text"
+					class="form-control" /> <span id="movie.help.poster"></span>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Rating: </label> <input id="movie.field.rating" type="number"
+					class="form-control" /> <span id="movie.help.rating"></span>
+			</fieldset>
+			<fieldset class="form-group">
+				<label>Category: </label> <select id="movie.field.category"
+					class="form-control">
+					<option value="Best Picture">Best Picture</option>
+					<option value="Cinematography">Cinematography</option>
+					<option value="Costume Design">Costume Design</option>
+					<option value="Directing">Directing</option>
+					<option value="Film Editing">Film Editing</option>
+					<option value="Markup and Hairstyling">Markup and
+						Hairstyling</option>
+					<option value="Music Original Score">Music (Original
+						Score)</option>
+					<option value="Music Original Song">Music (Original Song)</option>
+					<option value="Production Design">Production Design</option>
+					<option value="Sound Editing">Sound Editing</option>
+					<option value="Sound Mixing">Sound Mixing</option>
+					<option value="Visual Effects">Visual Effects</option>
+					<option value="Writing Adapted Screenplay">Writing
+						(Adapted Screenplay)</option>
+					<option value="Writing Original Screenplay">Writing
+						(Original Screenplay)</option>
+				</select> <span id="movie.help.category"></span>
+			</fieldset>
+			<fieldset>
+				<label>Result: </label> <label class="form-control"><input
+					id="movie.field.result.winner" name="movie.field.result"
+					type="radio" value="winner" />Winner</label> <label class="form-control"><input
+					id="movie.field.result.nominee" name="movie.field.result"
+					type="radio" value="nominee" />Nominee</label> <span
+					id="movie.help.result"></span>
+			</fieldset>
+			<fieldset>
+				<input id="btnSave" class="btn btn-primary" type="button"
+					value="Save" /> <input id="btnClear" class="btn btn-secondary"
+					type="button" value="Clear" />
+			</fieldset>
+		</form>
+		<table class="table">
+			<caption id="tblcaption">0 itens</caption>
+			<thead>
+				<tr>
+					<th>title</th>
+					<th>released date</th>
+					<th>budget</th>
+					<th>poster</th>
+					<th>rating</th>
+					<th>category</th>
+					<th>winner</th>
+				</tr>
+			</thead>
+			<tbody id="tblBody">
+				<tr>
+					<td>The Shape of Water</td>
+					<td>2017-12-22</td>
+					<td>19.400.000</td>
+					<td><img
+						src="https://drraa3ej68s2c.cloudfront.net/wp-content/uploads/2017/12/12163133/87954c22e6e3783117f13feadf7e9681f463b7011a91c7af2ebd1a962d20aa53-195x195.jpg"
+						width="30px"></td>
+					<td>74</td>
+					<td>Best Picture</td>
+					<td>yes</td>
+				</tr>
+			<tbody>
+		</table>
+	</div>
+
+
+	<script src="app.js">
+
+	</script>
+	<script src="movies.js">
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</body>
+</html>
