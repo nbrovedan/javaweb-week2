@@ -1,8 +1,9 @@
 # Práticas
 
-* O projeto deve ser clonado do  endereço `https://gitlab.com/vinnyvoffice/jwptf02-week2.git`
-* O projeto deve ser configurado para usar o seu repositório remoto no gitlab ou github
-* O projeto deve ser configurado para usar o heroku como ambiente de entrega
+* O projeto de referência deve ser clonado do  endereço `https://gitlab.com/vinnyvoffice/jwptf02-week2.git` para consulta
+* O projeto das práticas deve ser criado localmente
+* O projeto das práticas deve configurado para usar o seu repositório remoto no gitlab ou github
+* O projeto das práticas deve ser configurado para usar o heroku como ambiente de entrega
 * A codificação deve ser feita usando Eclipse JEE ou outra IDE java com suporte a Tomcat 9, Java 8 e Maven 3
 * A entrega de cada prática deve ser feita na respectiva atividade do Google Classroom informando a url da tag no repositório remoto git mais o endereço da aplicação no heroku
 

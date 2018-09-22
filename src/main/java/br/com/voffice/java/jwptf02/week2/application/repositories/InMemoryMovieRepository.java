@@ -54,9 +54,11 @@ public class InMemoryMovieRepository implements MovieRepository {
 	public Collection<Movie> findByYear(int year) {
 		LocalDate start = LocalDate.of(year, 1, 1);
 		LocalDate end = LocalDate.of(year, 12, 31);
-		return findAll().stream().filter( m -> {
-			return m.getReleasedDate() != null && m.getReleasedDate().isAfter(start) && m.getReleasedDate().isBefore(end);
-		}).collect(Collectors.toList());
+		return findAll().stream().filter( m ->
+			 m.getReleasedDate() != null &&
+			 m.getReleasedDate().isAfter(start) &&
+			 m.getReleasedDate().isBefore(end)
+		).collect(Collectors.toList());
 	}
 
 }

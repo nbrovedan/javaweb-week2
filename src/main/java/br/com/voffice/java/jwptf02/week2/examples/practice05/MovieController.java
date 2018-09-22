@@ -57,8 +57,12 @@ public class MovieController extends HttpServlet {
 		String format = req.getParameter("format");
 		format = Optional.ofNullable(format).filter(f -> Arrays.asList("json", "xml").contains(f)).orElse("json");
 		Movie movie = getMovie(req);
-		writeAsJson(resp, format, movie);
-		writeAsXml(resp, format, movie);
+		try {
+			writeAsJson(resp, format, movie);
+			writeAsXml(resp, format, movie);
+		} catch (Exception e) {
+			log("erro ao obter filmes", e);
+		}
 	}
 
 	private Movie getMovie(HttpServletRequest req) {
